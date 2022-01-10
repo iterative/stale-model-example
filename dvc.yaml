@@ -1,9 +1,9 @@
 stages:
   train:
-    cmd: python pretrained_model_tuner.py
+    cmd: python train.py
     deps:
-      - data/hymenoptera_data
-      - pretrained_model_tuner.py
+      - /cats-dogs
+      - train.py
     params:
       - lr
       - momentum
