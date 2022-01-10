@@ -1,0 +1,6 @@
+dvc
+dvclive
+matplotlib
+numpy
+torch
+torchvision

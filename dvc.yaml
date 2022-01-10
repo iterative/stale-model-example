@@ -1,0 +1,20 @@
+stages:
+  train:
+    cmd: python pretrained_model_tuner.py
+    deps:
+      - data/hymenoptera_data
+      - pretrained_model_tuner.py
+    params:
+      - lr
+      - momentum
+      - model_name
+      - num_classes
+      - batch_size
+      - num_epochs
+    outs:
+      - model.pt:
+          checkpoint: true
+    live:
+      results:
+        summary: true
+        html: true
