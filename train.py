@@ -3,12 +3,14 @@ import json
 import os
 from time import time
 
-import dvclive
+from dvclive import Live
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, models, transforms
 from ruamel.yaml import YAML
+
+dvclive = Live()
 
 # Where the data comes from
 data_dir = "./cats-dogs"

@@ -2,7 +2,7 @@ stages:
   train:
     cmd: python train.py
     deps:
-      - /cats-dogs
+      - ./cats-dogs
       - train.py
     params:
       - lr
