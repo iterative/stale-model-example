@@ -9,6 +9,11 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, models, transforms
 from ruamel.yaml import YAML
+from evidently.dashboard import Dashboard
+from evidently.tabs import DataDriftTab
+
+from evidently.model_profile import Profile
+from evidently.profile_sections import DataDriftProfileSection
 
 dvclive = Live()
 
@@ -166,6 +171,14 @@ def train():
 
     # Create training and validation datasets
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
+    # Add data drift tracking with Evidently
+    animals_data_drift_dashboard = Dashboard(tabs=[DataDriftTab()])
+    animals_data_drift_dashboard.calculate(image_datasets, image_datasets, column_mapping = None)
+    animals_data_drift_dashboard.show()
+
+    animals_data_drift_profile = Profile(sections=[DataDriftProfileSection()])
+    animals_data_drift_profile.calculate(image_datasets, image_datasets, column_mapping = None)
+    animals_data_drift_profile.json()
     # Create training and validation dataloaders
     dataloaders_dict = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=params["batch_size"], shuffle=True, num_workers=4) for x in ['train', 'val']}
 
