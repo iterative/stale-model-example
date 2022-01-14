@@ -6,5 +6,4 @@ results.json
 val_results.json
 /model.pt
 /dvclive
-/results
 /cats-dogs
