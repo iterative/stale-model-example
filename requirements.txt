@@ -3,5 +3,7 @@ dvclive
 evidently
 matplotlib
 numpy
+pandas
+sklearn
 torch
 torchvision
