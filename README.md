@@ -7,7 +7,7 @@ Here's what you need to do to get this project running.
 - Clone the repo
 - Create a virtual environment with a command like: `python -m venv .venv`
 - Install all of the dependencies with : `pip install -r requirements.txt`
-- Download the data for the project from [this data registry](https://github.com/iterative/dataset-registry/tree/master/blog) with: `dvc get https://github.com/iterative/dataset-registry blog/cats-dogs`
+- Run the `bicycle_demand.ipynb` notebook
 
 Now you should be able to run the project and DVC is already in place.
 
