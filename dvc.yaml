@@ -1,20 +1,23 @@
 stages:
-  train:
-    cmd: python train.py
+  prepare:
+    cmd: python src/prepare.py
     deps:
-      - hour.csv
+      - ./data/train.csv
+      - ./data/test.csv
+    outs:
+      - train.pkl
+      - test.pkl
+  train:
+    cmd: python src/train.py ./data/
+    deps:
+      - ./data/train.pkl
       - train.py
     params:
-      - lr
-      - momentum
-      - model_name
-      - num_classes
-      - batch_size
-      - num_epochs
+      - train.seed
+      - train.n_est
+      - train.min_split
     outs:
-      - model.pt:
-          checkpoint: true
-    live:
-      results:
-        summary: true
-        html: true
+      - model.pt
+    metrics:
+    - results.json:
+        cache: false
