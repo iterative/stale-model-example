@@ -22,10 +22,8 @@ min_split = params["min_split"]
 with open(os.path.join(input, "train.pkl"), "rb") as fd:
     matrix = pickle.load(fd)
 
-print(matrix)
-
-labels = np.squeeze(matrix[1:,].toarray())
-x = matrix[:,:]
+labels = matrix.iloc[:, 0].values
+x = matrix.iloc[:,1:].values
 
 sys.stderr.write("Input matrix size {}\n".format(matrix.shape))
 sys.stderr.write("X matrix size {}\n".format(x.shape))

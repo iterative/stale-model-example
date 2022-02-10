@@ -8,16 +8,14 @@ stages:
       - train.pkl
       - test.pkl
   train:
-    cmd: python src/train.py ./data/
+    cmd: python src/train.py ./data/ model.pkl
     deps:
       - ./data/train.pkl
-      - train.py
+      - ./src/train.py
     params:
       - train.seed
       - train.n_est
       - train.min_split
     outs:
-      - model.pt
-    metrics:
-    - results.json:
-        cache: false
+      - model.pkl
+      
