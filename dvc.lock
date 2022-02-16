@@ -1,28 +1,20 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python train.py
+    cmd: python src/train.py ./data/ model.pkl
     deps:
-    - path: ./cats-dogs
-      md5: 84453a3661e17405f48087e6cf409c51.dir
-      size: 12368201
-      nfiles: 542
-    - path: train.py
-      md5: 06004be540cb4811ac6268ba6c6a6bdd
-      size: 6942
+    - path: ./data/train.pkl
+      md5: 27aaf1b36c7daf274384e27db27b2415
+      size: 1198589
+    - path: ./src/train.py
+      md5: b8a8c159d651fa7620c3817c9359f569
+      size: 965
     params:
       params.yaml:
-        batch_size: 8
-        lr: 0.001
-        model_name: alexnet
-        momentum: 0.09
-        num_classes: 2
-        num_epochs: 5
+        train.min_split: 64
+        train.n_est: 100
+        train.seed: 20210428
     outs:
-    - path: model.pt
-      md5: eaa1fb9e37f3e6f9bee343c8020c9ddc
-      size: 228053109
-    - path: results
-      md5: ae921510d29bcf4b3acd985c72536194.dir
-      size: 122
-      nfiles: 2
+    - path: model.pkl
+      md5: c6aba367729d669d0d0996645be58c88
+      size: 6624782799

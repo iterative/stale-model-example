@@ -5,6 +5,4 @@ data/
 results.json
 val_results.json
 /model.pt
-/dvclive
-/cats-dogs
 model.pkl
