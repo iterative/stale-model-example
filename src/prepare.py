@@ -1,5 +1,5 @@
 import pandas as pd
-import os
+from os.path import exists
 
 train_df = pd.read_csv("./data/train.csv")
 test_df = pd.read_csv("./data/test.csv")
