@@ -5,6 +5,7 @@ import pickle
 import sys
 
 import sklearn.metrics as metrics
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import numpy as np
 
 if len(sys.argv) != 6:
@@ -24,20 +25,20 @@ with open(model_file, "rb") as fd:
 with open(matrix_file, "rb") as fd:
     matrix = pickle.load(fd)
 
-labels = matrix.iloc[:, 0].values
-x = matrix.iloc[:,1:].values
+x = matrix.iloc[:,1:11].values
 
 cleaned_x = np.where(np.isnan(x), 0, x)
+labels_pred = model.predict(cleaned_x)
 
 predictions_by_class = model.predict_proba(cleaned_x)
 predictions = predictions_by_class[:, 1]
 
-precision, recall, prc_thresholds = metrics.precision_recall_curve(labels, predictions)
+precision, recall, prc_thresholds = metrics.precision_recall_curve(labels_pred, predictions, pos_label=1)
 
-fpr, tpr, roc_thresholds = metrics.roc_curve(labels, predictions)
+fpr, tpr, roc_thresholds = metrics.roc_curve(labels_pred, predictions, pos_label=1)
 
-avg_prec = metrics.average_precision_score(labels, predictions)
-roc_auc = metrics.roc_auc_score(labels, predictions)
+avg_prec = metrics.average_precision_score(labels_pred, predictions)
+roc_auc = metrics.roc_auc_score(labels_pred, predictions)
 
 with open(scores_file, "w") as fd:
     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)

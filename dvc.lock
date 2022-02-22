@@ -1,0 +1,43 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/train.py ./data/ model.pkl
+    deps:
+    - path: ./data/train.pkl
+      md5: aded63c3d28a53d952ebad6d207b00dd
+      size: 1198746
+    - path: ./src/train.py
+      md5: bdc3fe9dc24e35b4bb445ab0d9b2ff80
+      size: 968
+    params:
+      params.yaml:
+        train.min_split: 64
+        train.n_est: 100
+        train.seed: 20210428
+    outs:
+    - path: model.pkl
+      md5: 89767643b99faa76c101ae8dbb65e653
+      size: 357072783
+  evaluate:
+    cmd: python src/evaluate.py model.pkl ./data scores.json prc.json roc.json
+    deps:
+    - path: ./data
+      md5: d2179c3ade24fac1b3b501ff1086c7bd.dir
+      size: 2886478
+      nfiles: 4
+    - path: model.pkl
+      md5: 89767643b99faa76c101ae8dbb65e653
+      size: 357072783
+    - path: src/evaluate.py
+      md5: e02da3a51da19c6ff91a4c4225a3b83f
+      size: 2162
+    outs:
+    - path: prc.json
+      md5: 291007bae5d6607715b5edc566a173c7
+      size: 146127
+    - path: roc.json
+      md5: 3d5002eb9f59c9712a60f859651aaf57
+      size: 428650
+    - path: scores.json
+      md5: 715353274939451e503e0d65c7ee5b18
+      size: 73
