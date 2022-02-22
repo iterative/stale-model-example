@@ -5,7 +5,6 @@ import pickle
 import sys
 
 import sklearn.metrics as metrics
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import numpy as np
 
 if len(sys.argv) != 6:
