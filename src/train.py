@@ -19,7 +19,7 @@ seed = params["seed"]
 n_est = params["n_est"]
 min_split = params["min_split"]
 
-with open(os.path.join(input, "train_set2.pkl"), "rb") as fd:
+with open(os.path.join(input, "train.pkl"), "rb") as fd:
     matrix = pickle.load(fd)
 
 labels = matrix.iloc[:, 11].values

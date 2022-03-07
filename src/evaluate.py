@@ -13,7 +13,7 @@ if len(sys.argv) != 6:
     sys.exit(1)
 
 model_file = sys.argv[1]
-matrix_file = os.path.join(sys.argv[2], "test_set2.pkl")
+matrix_file = os.path.join(sys.argv[2], "test.pkl")
 scores_file = sys.argv[3]
 prc_file = sys.argv[4]
 roc_file = sys.argv[5]
