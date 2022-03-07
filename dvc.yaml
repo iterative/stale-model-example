@@ -2,15 +2,21 @@ stages:
   # prepare:
   #   cmd: python src/prepare.py
   #   deps:
-  #     - ./data/train.csv
+  #     - ./data/train_set1.csv
+  #     - ./data/train_set2.csv
+  #     - ./data/train_set3.csv
   #     - ./data/test.csv
   #   outs:
-  #     - train.pkl
+  #     - train_set1.pkl
+  #     - train_set2.pkl
+  #     - train_set3.pkl
   #     - test.pkl
   train:
     cmd: python src/train.py ./data/ model.pkl
     deps:
       - ./data/train.pkl
+      - ./data/train_set1.pkl
+      - ./data/train_set2.pkl
       - ./src/train.py
     params:
       - train.seed

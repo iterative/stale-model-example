@@ -13,7 +13,7 @@ if len(sys.argv) != 6:
     sys.exit(1)
 
 model_file = sys.argv[1]
-matrix_file = os.path.join(sys.argv[2], "test.pkl")
+matrix_file = os.path.join(sys.argv[2], "test_set2.pkl")
 scores_file = sys.argv[3]
 prc_file = sys.argv[4]
 roc_file = sys.argv[5]
@@ -31,6 +31,8 @@ labels_pred = model.predict(cleaned_x)
 
 predictions_by_class = model.predict_proba(cleaned_x)
 predictions = predictions_by_class[:, 1]
+
+print(predictions)
 
 precision, recall, prc_thresholds = metrics.precision_recall_curve(labels_pred, predictions, pos_label=1)
 
