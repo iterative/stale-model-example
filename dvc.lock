@@ -11,13 +11,13 @@ stages:
       size: 968
     params:
       params.yaml:
-        train.min_split: 64
-        train.n_est: 375
+        train.min_split: 32
+        train.n_est: 475
         train.seed: 20210428
     outs:
     - path: model.pkl
-      md5: 44ef6542eab2e4ec438780f4662d7f40
-      size: 1341117010
+      md5: cec94c74272108c597e9643ebd94b88a
+      size: 3264516132
   evaluate:
     cmd: python src/evaluate.py model.pkl ./data scores.json prc.json roc.json
     deps:
@@ -26,18 +26,18 @@ stages:
       size: 6754395
       nfiles: 18
     - path: model.pkl
-      md5: 44ef6542eab2e4ec438780f4662d7f40
-      size: 1341117010
+      md5: cec94c74272108c597e9643ebd94b88a
+      size: 3264516132
     - path: src/evaluate.py
       md5: c69bddf8ce4ddbdee73e9e9f91095e85
       size: 1843
     outs:
     - path: prc.json
-      md5: 82e96df5e0d40736687cd221e60a4246
-      size: 134011
+      md5: fa2f1755489bcd4df3288f93402266fe
+      size: 134673
     - path: roc.json
-      md5: 94f251d8dac264f2df34afa7009caa36
-      size: 406549
+      md5: e7dd09e28da49ffbc6853e800553ec82
+      size: 389876
     - path: scores.json
-      md5: 85bb3e78626110cb05e9486a19b24da1
-      size: 74
+      md5: e8693f419bbf725635937dbf40da2384
+      size: 73
