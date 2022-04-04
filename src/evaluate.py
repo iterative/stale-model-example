@@ -7,6 +7,9 @@ import sys
 import sklearn.metrics as metrics
 import numpy as np
 
+from evidently.dashboard import Dashboard
+# from evidently.dashboard.tabs import DataDriftTab
+
 if len(sys.argv) != 6:
     sys.stderr.write("Arguments error. Usage:\n")
     sys.stderr.write("\tpython evaluate.py model features scores prc roc\n")
@@ -69,3 +72,9 @@ with open(roc_file, "w") as fd:
         fd,
         indent=4,
     )
+
+# data_drift_report = Dashboard(tabs=[DataDriftTab])
+# data_drift_report.calculate(cleaned_x[:75], cleaned_x[75:], 
+#     column_mapping = None)
+# data_drift_report.show()
+# data_drift_report.save("data-drift.html")

@@ -12,7 +12,7 @@ stages:
   #     - train_set3.pkl
   #     - test.pkl
   train:
-    cmd: python src/train.py ./data/ model.pkl
+    cmd: python src/train.py ./data/ ./models/model.pkl
     deps:
       - ./data/train.pkl
       - ./src/train.py
@@ -21,12 +21,12 @@ stages:
       - train.n_est
       - train.min_split
     outs:
-      - model.pkl
+      - ./models/model.pkl
   evaluate:
-    cmd: python src/evaluate.py model.pkl ./data scores.json prc.json roc.json
+    cmd: python src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
     deps:
     - ./data
-    - model.pkl
+    - ./models/model.pkl
     - src/evaluate.py
     metrics:
     - scores.json:
