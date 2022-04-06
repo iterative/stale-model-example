@@ -8,7 +8,7 @@ import sklearn.metrics as metrics
 import numpy as np
 
 from evidently.dashboard import Dashboard
-# from evidently.dashboard.tabs import DataDriftTab
+from evidently.tabs import DataDriftTab
 
 if len(sys.argv) != 6:
     sys.stderr.write("Arguments error. Usage:\n")
@@ -73,8 +73,8 @@ with open(roc_file, "w") as fd:
         indent=4,
     )
 
-# data_drift_report = Dashboard(tabs=[DataDriftTab])
-# data_drift_report.calculate(cleaned_x[:75], cleaned_x[75:], 
-#     column_mapping = None)
-# data_drift_report.show()
-# data_drift_report.save("data-drift.html")
+data_drift_report = Dashboard(tabs=[DataDriftTab(verbose_level=0)])
+data_drift_report.calculate(x[:75], x[75:], 
+    column_mapping = None)
+data_drift_report.show()
+data_drift_report.save("data_drift.html")
