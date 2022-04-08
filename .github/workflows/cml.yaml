@@ -14,7 +14,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           
-          dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
+          dvc get https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
 
           dvc exp run
 
