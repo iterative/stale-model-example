@@ -13,7 +13,7 @@ if len(sys.argv) != 6:
     sys.exit(1)
 
 model_file = sys.argv[1]
-matrix_file = os.path.join(sys.argv[2], "test.pkl")
+test_file = os.path.join(sys.argv[2], "test.pkl")
 scores_file = sys.argv[3]
 prc_file = sys.argv[4]
 roc_file = sys.argv[5]
@@ -21,7 +21,7 @@ roc_file = sys.argv[5]
 with open(model_file, "rb") as fd:
     model = pickle.load(fd)
 
-with open(matrix_file, "rb") as fd:
+with open(test_file, "rb") as fd:
     matrix = pickle.load(fd)
 
 x = matrix.iloc[:,1:11].values
