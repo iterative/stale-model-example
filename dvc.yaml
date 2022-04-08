@@ -1,16 +1,12 @@
 stages:
-  # prepare:
-  #   cmd: python src/prepare.py
-  #   deps:
-  #     - ./data/train_set1.csv
-  #     - ./data/train_set2.csv
-  #     - ./data/train_set3.csv
-  #     - ./data/test.csv
-  #   outs:
-  #     - train_set1.pkl
-  #     - train_set2.pkl
-  #     - train_set3.pkl
-  #     - test.pkl
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - ./data/train.csv
+      - ./data/test.csv
+    outs:
+      - train.pkl
+      - test.pkl
   train:
     cmd: python src/train.py ./data/ ./models/model.pkl
     deps:
