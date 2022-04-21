@@ -1,4 +1,4 @@
 train:
   seed: 20210428
-  n_est: 400
-  min_split: 28
+  n_est: 450
+  min_split: 32
