@@ -1,5 +1,7 @@
-dvc>=2.8.0
+dvc>=2.9.0
 dvclive
+dvc[s3]
+dvc[gs]
 evidently
 matplotlib
 numpy

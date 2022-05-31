@@ -1,4 +1,6 @@
 [core]
-    remote = data_remote
-['remote "data_remote"']
-    url = s3://dvc-temp/dvc-learn
+    remote = gcpbikes
+['remote "bikes"']
+    url = s3://updatedbikedata/
+['remote "gcpbikes"']
+    url = gs://updatedbikedata
