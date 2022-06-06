@@ -1,4 +1,4 @@
-This is the project that accompanies the [Preventing Stale Models in Production blog post]().
+This is the project branch that accompanies the [Serving Models with MLEM blog post]().
 
 ## Get started
 
@@ -7,10 +7,6 @@ Here's what you need to do to get this project running.
 - Clone the repo
 - Create a virtual environment with a command like: `python -m venv .venv`
 - Install all of the dependencies with : `pip install -r requirements.txt`
-- Run the `bicycle_demand.ipynb` notebook
+- Run `dvc exp run` to generate your first experiment
 
-Now you should be able to run the project and DVC is already in place.
-
-## Running experiments
-
-All that's left is running experiments. To do that, open a terminal and run: `dvc exp run`
+Now you should be able to run the project with DVC and MLEM already in place.
