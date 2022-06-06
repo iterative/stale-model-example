@@ -22,8 +22,8 @@ stages:
     cmd: python src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
     deps:
     - path: ./data
-      md5: a9bb63ecd660c505818beae53b4e6bb3.dir
-      size: 2893183
+      md5: 7bcc0908e5a6d6998c305ebf8b37964d.dir
+      size: 2892960
       nfiles: 10
     - path: ./models/model.pkl
       md5: a670e199b016bb891e269085a9dd60ae
