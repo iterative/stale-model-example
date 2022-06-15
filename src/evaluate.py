@@ -40,12 +40,13 @@ fpr, tpr, roc_thresholds = metrics.roc_curve(labels_pred, predictions, pos_label
 
 avg_prec = metrics.average_precision_score(labels_pred, predictions)
 roc_auc = metrics.roc_auc_score(labels_pred, predictions)
+    
+nth_point = math.ceil(len(prc_thresholds) / 1000)
+prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]
 
 with open(scores_file, "w") as fd:
     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
     
-nth_point = math.ceil(len(prc_thresholds) / 1000)
-prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]
 with open(prc_file, "w") as fd:
     json.dump(
         {
