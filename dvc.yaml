@@ -1,6 +1,6 @@
 stages:
   train:
-    cmd: python src/train.py ./data/ ./models/model.pkl
+    cmd: python src/train.py ./data/
     deps:
       - ./data/train.pkl
       - ./src/train.py
@@ -8,13 +8,11 @@ stages:
       - train.seed
       - train.n_est
       - train.min_split
-    outs:
-      - ./models/model.pkl
   evaluate:
-    cmd: python src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
+    cmd: python src/evaluate.py ./clf ./data scores.json prc.json roc.json
     deps:
     - ./data
-    - ./models/model.pkl
+    - ./clf
     - src/evaluate.py
     metrics:
     - scores.json:
