@@ -1,11 +1,12 @@
 import json
 import math
 import os
-import pickle
 import sys
 
+import pickle5 as pickle
 import sklearn.metrics as metrics
 import numpy as np
+from mlem.api import apply
 
 if len(sys.argv) != 6:
     sys.stderr.write("Arguments error. Usage:\n")
@@ -18,18 +19,15 @@ scores_file = sys.argv[3]
 prc_file = sys.argv[4]
 roc_file = sys.argv[5]
 
-with open(model_file, "rb") as fd:
-    model = pickle.load(fd)
-
 with open(test_file, "rb") as fd:
     matrix = pickle.load(fd)
 
 x = matrix.iloc[:,1:11].values
 
 cleaned_x = np.where(np.isnan(x), 0, x)
-labels_pred = model.predict(cleaned_x)
+labels_pred = apply(model_file, cleaned_x, method="predict")
 
-predictions_by_class = model.predict_proba(cleaned_x)
+predictions_by_class = apply(model_file, cleaned_x, method="predict_proba")
 predictions = predictions_by_class[:, 1]
 
 print(predictions)

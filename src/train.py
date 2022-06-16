@@ -1,20 +1,20 @@
 import os
-import pickle
 import sys
-
-import numpy as np
 import yaml
+
+from mlem.api import save
+import numpy as np
+import pickle5 as pickle
 from sklearn.ensemble import RandomForestClassifier
 
 params = yaml.safe_load(open("params.yaml"))["train"]
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 2:
     sys.stderr.write("Arguments error. Usage:\n")
     sys.stderr.write("\tpython train.py features model\n")
     sys.exit(1)
 
 input = sys.argv[1]
-output = sys.argv[2]
 seed = params["seed"]
 n_est = params["n_est"]
 min_split = params["min_split"]
@@ -35,5 +35,9 @@ clf = RandomForestClassifier(
 
 clf.fit(x, labels)
 
-with open(output, "wb") as fd:
-    pickle.dump(clf, fd)
+save(
+    clf,
+    "clf",
+    sample_data=x,
+    description="Random Forest Classifier",
+)
