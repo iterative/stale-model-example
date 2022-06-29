@@ -9,10 +9,10 @@ stages:
       - train.n_est
       - train.min_split
   evaluate:
-    cmd: python src/evaluate.py ./clf ./data scores.json prc.json roc.json
+    cmd: python src/evaluate.py ./clf.mlem ./data scores.json prc.json roc.json
     deps:
     - ./data
-    - ./clf
+    - ./clf.mlem
     - src/evaluate.py
     metrics:
     - scores.json:

@@ -1,0 +1,77 @@
+artifacts:
+  data:
+    hash: d98cddb83aec6de4ff8377fb84392053
+    size: 1070504485
+    uri: clf
+description: Random Forest Classifier
+model_type:
+  methods:
+    predict:
+      args:
+      - name: data
+        type_:
+          dtype: float64
+          shape:
+          - null
+          - 10
+          type: ndarray
+      name: predict
+      returns:
+        dtype: int64
+        shape:
+        - null
+        type: ndarray
+    predict_proba:
+      args:
+      - name: data
+        type_:
+          dtype: float64
+          shape:
+          - null
+          - 10
+          type: ndarray
+      name: predict_proba
+      returns:
+        dtype: float64
+        shape:
+        - null
+        - 822
+        type: ndarray
+    sklearn_predict:
+      args:
+      - name: X
+        type_:
+          dtype: float64
+          shape:
+          - null
+          - 10
+          type: ndarray
+      name: predict
+      returns:
+        dtype: int64
+        shape:
+        - null
+        type: ndarray
+    sklearn_predict_proba:
+      args:
+      - name: X
+        type_:
+          dtype: float64
+          shape:
+          - null
+          - 10
+          type: ndarray
+      name: predict_proba
+      returns:
+        dtype: float64
+        shape:
+        - null
+        - 822
+        type: ndarray
+  type: sklearn
+object_type: model
+requirements:
+- module: sklearn
+  version: 1.0.2
+- module: numpy
+  version: 1.21.6
