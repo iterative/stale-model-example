@@ -11,7 +11,7 @@ params = yaml.safe_load(open("params.yaml"))["train"]
 
 if len(sys.argv) != 2:
     sys.stderr.write("Arguments error. Usage:\n")
-    sys.stderr.write("\tpython train.py features model\n")
+    sys.stderr.write("\tpython train.py model\n")
     sys.exit(1)
 
 input = sys.argv[1]

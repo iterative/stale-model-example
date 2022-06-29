@@ -1,23 +1,19 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python src/train.py ./data/ ./models/model.pkl
+    cmd: python src/train.py ./data/
     deps:
     - path: ./data/train.pkl
       md5: aded63c3d28a53d952ebad6d207b00dd
       size: 1198746
     - path: ./src/train.py
-      md5: bdc3fe9dc24e35b4bb445ab0d9b2ff80
-      size: 968
+      md5: 94279e01ccd84c34a15bd3ea594d77fb
+      size: 1019
     params:
       params.yaml:
         train.min_split: 75
         train.n_est: 300
         train.seed: 20210428
-    outs:
-    - path: ./models/model.pkl
-      md5: a670e199b016bb891e269085a9dd60ae
-      size: 920152256
   evaluate:
     cmd: python src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
     deps:

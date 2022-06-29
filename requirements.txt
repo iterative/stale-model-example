@@ -1,15 +1,10 @@
-dvc>=2.9.0
-dvclive
-dvc[s3]
-dvc[gs]
-evidently
-fastapi
+dvc>=2.11.0
 flask
 flask_cors
 flask_migrate
 flask_sqlalchemy
 matplotlib
-mlem
+mlem[fastapi]
 numpy
 pandas
 pickle5
