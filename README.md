@@ -1,10 +1,11 @@
-This is the project that accompanies the [Preventing Stale Models in Production blog post]().
+This is the project that accompanies the [Converting a Jupyter Notebook to a DVC Project]().
 
 ## Get started
 
 Here's what you need to do to get this project running.
 
 - Clone the repo
+- Check out the `jupyter-to-dvc` branch: `git checkout jupyter-to-dvc`
 - Create a virtual environment with a command like: `python -m venv .venv`
 - Install all of the dependencies with : `pip install -r requirements.txt`
 - Run the `bicycle_demand.ipynb` notebook
