@@ -11,11 +11,11 @@ stages:
     outs:
       - ./models/model.pkl
   evaluate:
-    cmd: python src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
+    cmd: python ./src/evaluate.py ./models/model.pkl ./data scores.json prc.json roc.json
     deps:
     - ./data
     - ./models/model.pkl
-    - src/evaluate.py
+    - ./src/evaluate.py
     metrics:
     - scores.json:
         cache: false

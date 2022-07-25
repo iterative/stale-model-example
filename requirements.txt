@@ -1,4 +1,4 @@
-dvc>=2.9.0
+dvc>=2.11.0
 dvclive
 dvc[s3]
 dvc[gs]
@@ -6,6 +6,7 @@ evidently
 matplotlib
 numpy
 pandas
+pickle5
 sklearn
 torch
 torchvision
