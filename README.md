@@ -1,4 +1,4 @@
-This is the project that accompanies the [Preventing Stale Models in Production blog post]().
+This is the project that accompanies the [Preventing Stale Models in Production blog post](https://iterative.ai/blog/stale-models).
 
 ## Get started
 
