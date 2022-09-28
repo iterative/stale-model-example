@@ -6,6 +6,6 @@ evidently
 matplotlib
 numpy
 pandas
-sklearn
+scikit-learn
 torch
 torchvision
