@@ -4,11 +4,19 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml:0-dvc2-base1
+    env:
+      GIT_USER: dvc
+      GIT_EMAIL: dvc@iterative.ai
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+      - name: Fix git safe.directory in container
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          git config --global user.name ${GIT_USER}
+          git config --global user.email ${GIT_EMAIL}
       - name: Generate metrics report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -16,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
           dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
-
+          dvc pull
           dvc exp run
 
           dvc metrics show --show-md >> report.md
