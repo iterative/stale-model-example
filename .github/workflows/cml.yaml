@@ -4,9 +4,6 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml:0-dvc2-base1
-    env:
-      GIT_USER: Olivaw[bot]
-      GIT_EMAIL: 64868532+iterative-olivaw@users.noreply.github.com
     steps:
       - uses: actions/checkout@v3
         with:
@@ -14,9 +11,7 @@ jobs:
           fetch-depth: 0
       - name: Fix git safe.directory in container
         run: |
-          git config --global --add safe.directory ${GITHUB_WORKSPACE}
-          git config --global user.name ${GIT_USER}
-          git config --global user.email ${GIT_EMAIL}
+          cml ci
       - name: Generate metrics report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
